@@ -41,7 +41,7 @@ namespace CallRequestResponseService
                             new StringTable()
                             {
                                 ColumnNames = new string[] {"MPG", "Cyl", "Displacement", "Horsepower", "Weight", "Acceleration", "Year", "CountryCode", "Model"},
-                                Values = new string[,] {  { "0", "0", "0", "0", "0", "0", "0", "0", "value" },  { "0", "0", "0", "0", "0", "0", "0", "0", "value" },  }
+                                Values = new string[,] { { "18", "8", "307", "130", "3504", "12", "70", "1", "chevrolet chevelle malibu" },  { "18", "8", "307", "130", "3504", "12", "70", "1", "chevrolet chevelle malibu" },  }
                             }
                         },
                     },
@@ -68,16 +68,19 @@ namespace CallRequestResponseService
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     Console.WriteLine("Result: {0}", result);
+                    Console.ReadKey();
                 }
                 else
                 {
-                    Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
+                    Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));                 
 
                     // Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
                     Console.WriteLine(response.Headers.ToString());
 
                     string responseContent = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(responseContent);
+
+                    Console.ReadKey();
                 }
             }
         }
